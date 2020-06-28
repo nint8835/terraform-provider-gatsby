@@ -7,7 +7,8 @@ import (
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
-			"gatsby_text_bold": resourceGatsbyTextBold(),
+			"gatsby_text_bold":   resourceGatsbyTextBold(),
+			"gatsby_text_italic": resourceGatsbyTextItalic(),
 		},
 	}
 }
