@@ -1,38 +1,44 @@
-resource "gatsby_text_italic" "so_cool" {
-  text = "so cool"
-}
-resource "gatsby_text_bold" "bold_text" {
-  text = "make this bold"
+resource "gatsby_text_link" "colab_link" {
+    url = "https://www.colabsoftware.com"
+    label = "CoLab Software"
 }
 
-resource "gatsby_text_link" "label_free_link" {
-  url = "https://google.ca"
+locals {
+    links = {
+        GitHub = "https://github.com/nint8835"
+        LinkedIn = "https://www.linkedin.com/in/nint8835"
+        Twitter = "https://twitter.com/BootlegJohn"
+        Email = "mailto:riley@rileyflynn.me"
+    }
 }
 
-resource "gatsby_text_link" "labeled_link" {
-  url   = "https://google.ca"
-  label = "I have a label!"
+resource "gatsby_text_link" "link_list_link" {
+    for_each = local.links
+
+    url = each.value
+    label = each.key
 }
 
-resource "gatsby_text_heading" "demo_heading" {
-  text = "Hello world"
+resource "gatsby_text_heading" "link_list_header" {
+    text = "Links"
+    level = 3
 }
 
-resource "gatsby_text_heading" "subheading" {
-  text  = "Look at these cool links"
-  level = 2
+resource "gatsby_text_list" "link_list" {
+    items = [for link in gatsby_text_link.link_list_link: link.contents]
 }
 
-output "demo_text" {
-  value = <<EOF
-${gatsby_text_heading.demo_heading.contents}
+resource "gatsby_text_list" "index_md" {
+    prefix = ""
+    items = [
+        "Hi! I'm Riley. I'm a Full Stack Developer for ${gatsby_text_link.colab_link.contents}",
+        "",
+        gatsby_text_heading.link_list_header.contents,
+        "",
+        gatsby_text_list.link_list.contents
+    ]
+}
 
-Look at my cool website, isn't it ${gatsby_text_italic.so_cool.contents}?
-
-I can even do things like ${gatsby_text_bold.bold_text.contents}!
-
-${gatsby_text_heading.subheading.contents}
-${gatsby_text_link.label_free_link.contents}
-${gatsby_text_link.labeled_link.contents}
-    EOF
+output "index_md" {
+    value = gatsby_text_list.index_md.contents
 }

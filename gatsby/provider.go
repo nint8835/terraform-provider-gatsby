@@ -11,6 +11,7 @@ func Provider() *schema.Provider {
 			"gatsby_text_italic":  resourceGatsbyTextItalic(),
 			"gatsby_text_link":    resourceGatsbyTextLink(),
 			"gatsby_text_heading": resourceGatsbyTextHeading(),
+			"gatsby_text_list":    resourceGatsbyTextList(),
 		},
 	}
 }
