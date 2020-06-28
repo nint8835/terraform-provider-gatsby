@@ -12,7 +12,7 @@ func resourceGatsbyTextHeading() *schema.Resource {
 		Create: resourceGatsbyTextHeadingCreate,
 		Read:   resourceGatsbyTextHeadingRead,
 		Update: resourceGatsbyTextHeadingUpdate,
-		Delete: resourceGatsbyTextHeadingDelete,
+		Delete: schema.RemoveFromState,
 
 		Schema: map[string]*schema.Schema{
 			"text": {
@@ -54,8 +54,4 @@ func resourceGatsbyTextHeadingRead(d *schema.ResourceData, m interface{}) error 
 
 func resourceGatsbyTextHeadingUpdate(d *schema.ResourceData, m interface{}) error {
 	return resourceGatsbyTextHeadingRead(d, m)
-}
-
-func resourceGatsbyTextHeadingDelete(d *schema.ResourceData, m interface{}) error {
-	return nil
 }

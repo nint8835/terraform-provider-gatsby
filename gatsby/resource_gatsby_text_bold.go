@@ -11,7 +11,7 @@ func resourceGatsbyTextBold() *schema.Resource {
 		Create: resourceGatsbyTextBoldCreate,
 		Read:   resourceGatsbyTextBoldRead,
 		Update: resourceGatsbyTextBoldUpdate,
-		Delete: resourceGatsbyTextBoldDelete,
+		Delete: schema.RemoveFromState,
 
 		Schema: map[string]*schema.Schema{
 			"text": {
@@ -40,8 +40,4 @@ func resourceGatsbyTextBoldRead(d *schema.ResourceData, m interface{}) error {
 
 func resourceGatsbyTextBoldUpdate(d *schema.ResourceData, m interface{}) error {
 	return resourceGatsbyTextBoldRead(d, m)
-}
-
-func resourceGatsbyTextBoldDelete(d *schema.ResourceData, m interface{}) error {
-	return nil
 }

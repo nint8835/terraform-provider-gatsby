@@ -11,7 +11,7 @@ func resourceGatsbyTextLink() *schema.Resource {
 		Create: resourceGatsbyTextLinkCreate,
 		Read:   resourceGatsbyTextLinkRead,
 		Update: resourceGatsbyTextLinkUpdate,
-		Delete: resourceGatsbyTextLinkDelete,
+		Delete: schema.RemoveFromState,
 
 		Schema: map[string]*schema.Schema{
 			"url": {
@@ -51,8 +51,4 @@ func resourceGatsbyTextLinkRead(d *schema.ResourceData, m interface{}) error {
 
 func resourceGatsbyTextLinkUpdate(d *schema.ResourceData, m interface{}) error {
 	return resourceGatsbyTextLinkRead(d, m)
-}
-
-func resourceGatsbyTextLinkDelete(d *schema.ResourceData, m interface{}) error {
-	return nil
 }

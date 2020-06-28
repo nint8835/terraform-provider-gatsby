@@ -12,7 +12,7 @@ func resourceGatsbyTextList() *schema.Resource {
 		Create: resourceGatsbyTextListCreate,
 		Read:   resourceGatsbyTextListRead,
 		Update: resourceGatsbyTextListUpdate,
-		Delete: resourceGatsbyTextListDelete,
+		Delete: schema.RemoveFromState,
 
 		Schema: map[string]*schema.Schema{
 			"prefix": {
@@ -67,8 +67,4 @@ func resourceGatsbyTextListRead(d *schema.ResourceData, m interface{}) error {
 
 func resourceGatsbyTextListUpdate(d *schema.ResourceData, m interface{}) error {
 	return resourceGatsbyTextListRead(d, m)
-}
-
-func resourceGatsbyTextListDelete(d *schema.ResourceData, m interface{}) error {
-	return nil
 }

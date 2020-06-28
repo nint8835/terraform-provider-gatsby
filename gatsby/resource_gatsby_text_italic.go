@@ -11,7 +11,7 @@ func resourceGatsbyTextItalic() *schema.Resource {
 		Create: resourceGatsbyTextItalicCreate,
 		Read:   resourceGatsbyTextItalicRead,
 		Update: resourceGatsbyTextItalicUpdate,
-		Delete: resourceGatsbyTextItalicDelete,
+		Delete: schema.RemoveFromState,
 
 		Schema: map[string]*schema.Schema{
 			"text": {
@@ -40,8 +40,4 @@ func resourceGatsbyTextItalicRead(d *schema.ResourceData, m interface{}) error {
 
 func resourceGatsbyTextItalicUpdate(d *schema.ResourceData, m interface{}) error {
 	return resourceGatsbyTextItalicRead(d, m)
-}
-
-func resourceGatsbyTextItalicDelete(d *schema.ResourceData, m interface{}) error {
-	return nil
 }
