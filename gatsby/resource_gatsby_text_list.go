@@ -61,7 +61,7 @@ func resourceGatsbyTextListRead(d *schema.ResourceData, m interface{}) error {
 
 	formattedText := strings.Join(prefixedStrings, separator)
 	d.Set("contents", formattedText)
-	d.SetId(formattedText)
+	d.SetId(getID(formattedText))
 	return nil
 }
 

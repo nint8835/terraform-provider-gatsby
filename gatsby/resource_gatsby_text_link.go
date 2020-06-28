@@ -35,17 +35,19 @@ func resourceGatsbyTextLinkCreate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceGatsbyTextLinkRead(d *schema.ResourceData, m interface{}) error {
-	url := d.Get("url")
+	url := d.Get("url").(string)
 	label, labelExists := d.GetOk("label")
+	var labelText string
+
 	if labelExists {
-		label = label.(string)
+		labelText = label.(string)
 	} else {
-		label = url
+		labelText = url
 	}
 
-	formattedText := fmt.Sprintf("[%s](%s)", label, url)
+	formattedText := fmt.Sprintf("[%s](%s)", labelText, url)
 	d.Set("contents", formattedText)
-	d.SetId(formattedText)
+	d.SetId(getID(labelText))
 	return nil
 }
 
