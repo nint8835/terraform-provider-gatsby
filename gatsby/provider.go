@@ -13,6 +13,7 @@ func Provider() *schema.Provider {
 			"gatsby_text_heading":         resourceGatsbyTextHeading(),
 			"gatsby_text_list":            resourceGatsbyTextList(),
 			"gatsby_text_horizontal_rule": resourceGatsbyTextHorizontalRule(),
+			"gatsby_text_image":           resourceGatsbyTextImage(),
 		},
 	}
 }
