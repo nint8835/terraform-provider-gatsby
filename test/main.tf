@@ -48,6 +48,7 @@ resource "gatsby_text_list" "index_md" {
   ]
 }
 
-output "index_md" {
-  value = gatsby_text_list.index_md.contents
+resource "gatsby_page" "demo_page" {
+    path = "/"
+    contents = gatsby_text_list.index_md.contents
 }
