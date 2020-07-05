@@ -35,6 +35,15 @@ resource "gatsby_text_image" "test_image" {
     alt_text = "I'm a test image!"
 }
 
+resource "gatsby_text_code" "test_code" {
+  language = "py"
+  multiline = true
+  code = <<EOL
+  def test():
+    pass
+  EOL
+}
+
 resource "gatsby_text_list" "index_md" {
   prefix = ""
   items = [
@@ -44,7 +53,8 @@ resource "gatsby_text_list" "index_md" {
     gatsby_text_image.test_image.contents,
     gatsby_text_heading.link_list_header.contents,
     "",
-    gatsby_text_list.link_list.contents
+    gatsby_text_list.link_list.contents,
+    gatsby_text_code.test_code.contents
   ]
 }
 
