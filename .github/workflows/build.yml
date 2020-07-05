@@ -20,6 +20,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          with:
-            name: terraform-provider-gatsby
-            path: terraform-provider-gatsby
+          name: terraform-provider-gatsby
+          path: terraform-provider-gatsby
