@@ -49,6 +49,8 @@ resource "gatsby_text_list" "index_md" {
 }
 
 resource "gatsby_page" "demo_page" {
-    path = "/"
     contents = gatsby_text_list.index_md.contents
+    frontmatter = {
+      path = "/terraform"
+    }
 }
