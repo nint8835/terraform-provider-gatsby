@@ -40,7 +40,7 @@ func resourceGatsbyTextImageRead(d *schema.ResourceData, m interface{}) error {
 
 	formattedText := fmt.Sprintf("![%s](%s)", altText, path)
 	d.Set("contents", formattedText)
-	d.SetId(getID(altText))
+	d.SetId(getID())
 	return nil
 }
 

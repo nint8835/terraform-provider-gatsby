@@ -47,7 +47,7 @@ func resourceGatsbyTextLinkRead(d *schema.ResourceData, m interface{}) error {
 
 	formattedText := fmt.Sprintf("[%s](%s)", labelText, url)
 	d.Set("contents", formattedText)
-	d.SetId(getID(labelText))
+	d.SetId(getID())
 	return nil
 }
 

@@ -26,6 +26,6 @@ func resourceGatsbyTextHorizontalRuleCreate(d *schema.ResourceData, m interface{
 func resourceGatsbyTextHorizontalRuleRead(d *schema.ResourceData, m interface{}) error {
 	formattedText := "---"
 	d.Set("contents", formattedText)
-	d.SetId(getID(formattedText))
+	d.SetId(getID())
 	return nil
 }

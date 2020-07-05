@@ -48,7 +48,7 @@ func resourceGatsbyTextHeadingRead(d *schema.ResourceData, m interface{}) error 
 	level := d.Get("level").(int)
 	formattedText := fmt.Sprintf("%s %s", strings.Repeat("#", level), text)
 	d.Set("contents", formattedText)
-	d.SetId(getID(text))
+	d.SetId(getID())
 	return nil
 }
 

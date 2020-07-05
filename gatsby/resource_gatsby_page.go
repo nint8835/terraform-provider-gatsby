@@ -48,7 +48,7 @@ func resourceGatsbyPageRead(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 	formattedText := fmt.Sprintf("---\n%s---\n%s", data, contents)
-	d.SetId(getID(formattedText))
+	d.SetId(getID())
 	d.Set("page_text", formattedText)
 	return nil
 }
